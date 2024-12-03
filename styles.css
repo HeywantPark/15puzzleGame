@@ -1,0 +1,119 @@
+/* 15 퍼즐 게임 스타일: 정사각형 패널과 중앙 정렬을 구현 */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #4E3D77; /* 배경 색상 */
+    color: white;
+    display: flex; /* 중앙 정렬 */
+    flex-direction: column; /* 세로 방향 */
+    align-items: center; /* 가로 중앙 */
+    justify-content: center; /* 세로 중앙 */
+    height: 100vh;
+    box-sizing: border-box; /* 전체 레이아웃 정확히 계산 */
+}
+
+.container {
+    background-color: #563d7c; /* 컨테이너 배경 색상 */
+    border-radius: 10px; /* 둥근 모서리 */
+    padding: 20px; /* 내부 여백 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 */
+    max-width: 500px; /* 컨테이너 최대 너비 (크기 확대) */
+    width: 100%; /* 반응형 너비 */
+    margin: auto; /* 화면 가운데 정렬 */
+    box-sizing: border-box; /* 여백 포함 계산 */
+}
+
+h1 {
+    font-size: 36px; /* 제목 글자 크기 */
+    font-weight: bold; /* 제목 글자 두께 */
+    margin-bottom: 20px; /* 아래 여백 */
+    color: #FFFFFF; /* 제목 글자 색상 */
+    text-shadow: 2px 2px #6A4CB4; /* 텍스트 그림자 */
+}
+
+.game-info {
+    display: flex; /* 가로 정렬 */
+    justify-content: space-between; /* 양쪽 정렬 */
+    align-items: center; /* 세로 정렬 */
+    margin-bottom: 20px; /* 아래 여백 */
+}
+
+.game-info button {
+    background-color: #6A4CB4; /* 버튼 배경 색상 */
+    border: none; /* 테두리 제거 */
+    color: white; /* 버튼 글자 색상 */
+    font-size: 16px; /* 글자 크기 */
+    padding: 10px 20px; /* 내부 여백 */
+    border-radius: 5px; /* 둥근 모서리 */
+    cursor: pointer; /* 클릭 시 커서 변경 */
+    font-weight: bold; /* 글자 굵기 */
+    transition: background-color 0.3s ease; /* 색상 전환 */
+}
+
+.game-info button:hover {
+    background-color: #7B5ECF;
+}
+
+.puzzle-board {
+    display: grid; /* 그리드 레이아웃 */
+    grid-template-columns: repeat(4, 1fr); /* 4개의 동일한 열 */
+    grid-gap: 10px; /* 타일 간 간격 */
+    border-radius: 8px; /* 둥근 모서리 */
+    padding: 10px; /* 내부 여백 */
+    aspect-ratio: 1 / 1; /* 퍼즐 보드를 정사각형 비율로 유지 */
+    width: 100%; /* 보드가 부모에 맞게 크기 조정 */
+    max-width: 500px; /* 보드 최대 크기 확대 */
+    margin-left: -10px;
+}
+
+.tile {
+    display: flex; /* 내용물 중앙 정렬 */
+    justify-content: center; /* 가로 정렬 */
+    align-items: center; /* 세로 정렬 */
+    background-color: #86E1C9; /* 타일 배경 색상 */
+    color: white; /* 타일 글자 색상 */
+    font-size: 28px; /* 글자 크기 확대 */
+    font-weight: bold; /* 글자 굵기 */
+    aspect-ratio: 1 / 1; /* 정사각형 비율 유지 */
+    border-radius: 5px; /* 둥근 모서리 */
+    cursor: pointer; /* 클릭 가능 커서 */
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.2); /* 타일 그림자 */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* 애니메이션 효과 */
+}
+
+.tile:active {
+    transform: scale(0.95); /* 클릭 시 크기 줄어듦 */
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3); /* 클릭 시 그림자 효과 */
+}
+
+.tile.empty {
+    background-color: #4E3D77; /* 빈 타일 배경 색상 */
+    box-shadow: none; /* 그림자 없음 */
+    cursor: default; /* 클릭 불가능 */
+}
+#pause-button {
+    margin-top: 20px; /* 버튼과 위 요소 간 간격 */
+    background-color: #6A4CB4; /* 버튼 배경 색상 */
+    border: none; /* 테두리 제거 */
+    color: white; /* 글자 색상 */
+    font-size: 18px; /* 글자 크기 */
+    font-weight: bold; /* 글자 굵기 */
+    padding: 12px 20px; /* 내부 여백 */
+    border-radius: 8px; /* 둥근 모서리 */
+    cursor: pointer; /* 클릭 가능 커서 */
+    width: 100%; /* 버튼이 컨테이너에 맞게 늘어남 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 버튼 그림자 */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 호버 효과 */
+}
+
+#pause-button:hover {
+    background-color: #7B5ECF; /* 호버 시 배경 색상 */
+    transform: scale(1.02); /* 약간 확대 */
+}
+
+#pause-button:active {
+    transform: scale(0.98); /* 클릭 시 축소 */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 눌린 효과 */
+}
